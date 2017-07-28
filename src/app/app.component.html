@@ -1,4 +1,8 @@
 <div class="container">
-  <app-clock-watch></app-clock-watch>
+  <app-clock-watch *ngIf="watchType == 'watch'"></app-clock-watch>
+  <app-clock-timer *ngIf="watchType == 'timer'"></app-clock-timer>
+  <app-clock-countdown *ngIf="watchType == 'countdown'"></app-clock-countdown>
+  <app-clock-control (change)="changeType($event.target)"></app-clock-control>
+  {{ watchType }}
 </div>
 

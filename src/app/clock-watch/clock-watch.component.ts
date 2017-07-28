@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ClockService } from '../clock.service';
 
 @Component({
   selector: 'app-clock-watch',
@@ -12,30 +11,31 @@ export class ClockWatchComponent implements OnInit {
   minutesNow: number;
   secondsNow: number;
 
-  constructor(private clockService: ClockService) {
-    this.dateNow = this.clockService.getTimeNow();
-    this.hoursNow = this.dateNow.getHours();
-    this.minutesNow = this.dateNow.getMinutes();
-    this.secondsNow = this.dateNow.getSeconds();
+  constructor() {
+    this.initCurrentWatch();
   }
 
-  ngOnInit() {
-    setInterval(() => {
-      this.dateNow = this.clockService.getTimeNow();
-      this.hoursNow = this.dateNow.getHours();
-      this.minutesNow = this.dateNow.getMinutes();
-      this.secondsNow = this.dateNow.getSeconds();
+   ngOnInit() {
+    this.watchInterval = setInterval(() => {
+      this.initCurrentWatch() 
     }, 1000)
   }
 
-  timerMin: number = 0;
-  timerMax: number = 60;
+  watchInterval;
 
-  watchType: string = 'watch';
-  onChangedType(newWatchType: string) {
-    this.watchType = newWatchType;
-  }
-  changeType(typeRadio) {
-    this.watchType = typeRadio.value;
-  }
+  initCurrentWatch() {
+    this.dateNow = new Date;
+    this.hoursNow = this.dateNow.getHours();
+    this.minutesNow = this.dateNow.getMinutes();
+    this.secondsNow = this.dateNow.getSeconds();
+  };
+
+  // initTimer() {
+  //   clearInterval(this.watchInterval);
+  // };
+
+  // initCountdown() {
+  //   clearInterval(this.watchInterval);
+  // };
+
 }

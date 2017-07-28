@@ -21,17 +21,6 @@
   </span>
 </div>
 
-  <app-clock-control (change)="changeType($event.target)"></app-clock-control>
 
-<form id="timer-controls" [hidden]="watchType != 'timer'">
-	<button>Start</button>
-	<button>Pause</button>
-	<button>Reset</button> Set time:<input type="number" [min]="timerMin" [max]="timerMax">
-</form>
-<form id="countdown-controls" [hidden]="watchType != 'countdown'">
-	<button>Start</button>
-	<button>Pause</button>
-	<button>Reset</button>
-	<button>Laps...</button>
-</form>
+
 

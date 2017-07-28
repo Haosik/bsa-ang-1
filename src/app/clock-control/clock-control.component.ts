@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
-import { ClockService } from '../clock.service';
 // import { NgModel, FormsModule } from '@angular/forms';
 
 @Component({
@@ -8,7 +7,7 @@ import { ClockService } from '../clock.service';
   styleUrls: ['./clock-control.component.scss']
 })
 export class ClockControlComponent implements OnInit {
-
+  
   constructor() { }
 
   @Output() onChangedType = new EventEmitter<string>();

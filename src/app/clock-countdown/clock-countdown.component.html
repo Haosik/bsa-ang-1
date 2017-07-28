@@ -1,0 +1,14 @@
+<p>
+  clock-countdown works!
+</p>
+<div class="q">{{timer}}</div>
+<div class="w">{{lapTime}}</div>
+<ul>
+	<li *ngFor="let lap of laps">{{lap.time}}</li>
+</ul>
+<form id="countdown-controls">
+	<button (click)="start()">Start</button>
+	<button (click)="pause()">Pause</button>
+	<button (click)="reset()">Reset</button>  
+	<button (click)="lap()">Laps...</button>
+</form>
