@@ -13,7 +13,7 @@
     <span *ngIf="secondsNow < 10" class="digit-zero">0</span>
     {{secondsNow}}
   </span>
-  <span class="watch-milisec">
+  <span class="watch-milisec" *ngIf="watchType != 'watch'">
     <span class="watch-colon">:</span>
     <span id="watch-miliseconds" class="watch__digits-box">
       000
@@ -22,7 +22,6 @@
 </div>
 
   <app-clock-control (change)="changeType($event.target)"></app-clock-control>
-{{ watchType }}
 
 <form id="timer-controls" [hidden]="watchType != 'timer'">
 	<button>Start</button>
