@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgModel, FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ClockControlComponent } from './clock-control/clock-control.component';
@@ -13,7 +14,8 @@ import { ClockService } from './clock.service';
     ClockWatchComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [ClockService],
   bootstrap: [AppComponent]

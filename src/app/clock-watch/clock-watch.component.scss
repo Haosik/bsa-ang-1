@@ -1,0 +1,24 @@
+#clockWatch {
+	display: flex;
+	align-items: center;
+	margin-bottom: 30px;
+	font-weight: 700;
+	font-family: monospace;
+	font-size: 28px;
+}
+
+.watch__digits-box {
+	display: inline-flex;
+	padding: 10px;
+	color: #fff;
+	border-radius: 10px;
+	background-color: #000;
+}
+.watch-milisec {
+	display: inline-flex;
+	align-content: center;
+}
+.watch-colon {
+	display: inline-flex;
+	align-items: center;
+}

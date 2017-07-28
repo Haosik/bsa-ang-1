@@ -1,0 +1,38 @@
+<div id="clockWatch">
+	<span id="watch-hours" class="watch__digits-box">
+    <span *ngIf="hoursNow < 10" class="digit-zero">0</span>
+    {{hoursNow}}
+  </span>
+  <span class="watch-colon">:</span>
+	<span id="watch-minutes" class="watch__digits-box">
+    <span *ngIf="minutesNow < 10" class="digit-zero">0</span>
+    {{minutesNow}}
+  </span>
+  <span class="watch-colon">:</span>
+	<span id="watch-seconds" class="watch__digits-box">
+    <span *ngIf="secondsNow < 10" class="digit-zero">0</span>
+    {{secondsNow}}
+  </span>
+  <span class="watch-milisec">
+    <span class="watch-colon">:</span>
+    <span id="watch-miliseconds" class="watch__digits-box">
+      000
+    </span>
+  </span>
+</div>
+
+  <app-clock-control (change)="changeType($event.target)"></app-clock-control>
+{{ watchType }}
+
+<form id="timer-controls" [hidden]="watchType != 'timer'">
+	<button>Start</button>
+	<button>Pause</button>
+	<button>Reset</button> Set time:<input type="number" [min]="timerMin" [max]="timerMax">
+</form>
+<form id="countdown-controls" [hidden]="watchType != 'countdown'">
+	<button>Start</button>
+	<button>Pause</button>
+	<button>Reset</button>
+	<button>Laps...</button>
+</form>
+
