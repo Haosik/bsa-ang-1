@@ -1,61 +1,57 @@
 <div>Total Time:</div>
 <div class="clockWatch">
 	<span id="watch-hours" class="watch__digits-box">
-    <span *ngIf="hoursSpent < 10" class="digit-zero">0</span>
-    {{hoursSpent}}
-  </span>
-  <span class="watch-colon">:</span>
+    <span *ngIf="hoursSpent < 10" class="digit-zero">0</span> {{hoursSpent}}
+	</span>
+	<span class="watch-colon">:</span>
 	<span id="watch-minutes" class="watch__digits-box">
-    <span *ngIf="minutesSpent < 10" class="digit-zero">0</span>
-    {{minutesSpent}}
-  </span>
-  <span class="watch-colon">:</span>
+    <span *ngIf="minutesSpent < 10" class="digit-zero">0</span> {{minutesSpent}}
+	</span>
+	<span class="watch-colon">:</span>
 	<span id="watch-seconds" class="watch__digits-box">
-    <span *ngIf="secondsSpent < 10" class="digit-zero">0</span>
-    {{secondsSpent}}
+    <span *ngIf="secondsSpent < 10" class="digit-zero">0</span> {{secondsSpent}}
 	</span>
 	<span class="watch-colon">:</span>
 	<span id="watch-miliseconds" class="watch-milisec watch__digits-box">
-		<span *ngIf="milisecondsSpent < 100" class="digit-zero">00</span>
-    {{milisecondsSpent}}
-  </span>
-</div>
-
-<div>Current Lap Time:</div>
-<div class="clockWatch lapWatch">
-	<span id="watch-hours" class="watch__digits-box">
-    <span *ngIf="currLaphours < 10" class="digit-zero">0</span>
-    {{currLaphours}}
-  </span>
-  <span class="watch-colon">:</span>
-	<span id="watch-minutes" class="watch__digits-box">
-    <span *ngIf="currLapMinutes < 10" class="digit-zero">0</span>
-    {{currLapMinutes}}
-  </span>
-  <span class="watch-colon">:</span>
-	<span id="watch-seconds" class="watch__digits-box">
-    <span *ngIf="currLapSec < 10" class="digit-zero">0</span>
-    {{currLapSec}}
+		<span *ngIf="milisecondsSpent < 100" class="digit-zero">00</span> {{milisecondsSpent}}
 	</span>
-	<span class="watch-colon">:</span>
-	<span id="watch-miliseconds" class="watch-milisec watch__digits-box">
-		<span *ngIf="currLapMilisec < 100" class="digit-zero">00</span>
-    {{currLapMilisec}}
-  </span>
+</div>
+
+<div class="div" *ngIf="laps.length >= 1">
+	<div>Current Lap Time:</div>
+	<div class="clockWatch lapWatch">
+		<span id="watch-hours" class="watch__digits-box">
+    <span *ngIf="currLaphours < 10" class="digit-zero">0</span> {{currLaphours}}
+		</span>
+		<span class="watch-colon">:</span>
+		<span id="watch-minutes" class="watch__digits-box">
+    <span *ngIf="currLapMinutes < 10" class="digit-zero">0</span> {{currLapMinutes}}
+		</span>
+		<span class="watch-colon">:</span>
+		<span id="watch-seconds" class="watch__digits-box">
+    <span *ngIf="currLapSec < 10" class="digit-zero">0</span> {{currLapSec}}
+		</span>
+		<span class="watch-colon">:</span>
+		<span id="watch-miliseconds" class="watch-milisec watch__digits-box">
+		<span *ngIf="currLapMilisec < 100" class="digit-zero">00</span> {{currLapMilisec}}
+		</span>
+	</div>
+	<div class="avg-lap-time"> Average Lap Time: {{avgLapTime}} ms</div>
 </div>
 
 
-<ul>
-	<li *ngFor="let lap of laps">
-		<span>{{lap.hours}}</span>
-		<span>{{lap.minutes}}</span>
-		<span>{{lap.seconds}}</span>
-		<span>{{lap.miliseconds}}</span>
+<ol>
+	<li *ngFor="let lap of laps" [class]="lap.slowerLap ? 'lap slower-lap' : 'lap'">
+		<span>{{lap.hours}} h</span>
+		<span>{{lap.minutes}} m</span>
+		<span>{{lap.seconds}} s</span>
+		<span>{{lap.miliseconds}} ms</span>
+		<!-- <p>Avg lap time: {{ avgLapTime }} ms</p> -->
 	</li>
-</ul>
+</ol>
 <form id="countdown-controls">
-	<button (click)="start()">Start</button>
-	<button (click)="pause()">Pause</button>
+	<button (click)="start()" [disabled]="timer > 0 && !active">Start</button>
+	<button (click)="pause()" [disabled]="timer <= 0">Pause</button>
 	<button (click)="reset()">Reset</button>
-	<button (click)="lap()">Laps...</button>
+	<button (click)="lap()" [disabled]="lapTime <= 0">Laps</button>
 </form>

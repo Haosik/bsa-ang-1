@@ -1,0 +1,12 @@
+.lap {
+	color: LimeGreen;
+	border-bottom: 1px solid lightgray;
+	&.slower-lap {
+		color: tomato;
+	}
+}
+
+.avg-lap-time {
+	font-size: 28px;
+	font-family: sans-serif;
+}
