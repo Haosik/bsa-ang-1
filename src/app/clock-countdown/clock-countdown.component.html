@@ -1,14 +1,61 @@
-<p>
-  clock-countdown works!
-</p>
-<div class="q">{{timer}}</div>
-<div class="w">{{lapTime}}</div>
+<div>Total Time:</div>
+<div class="clockWatch">
+	<span id="watch-hours" class="watch__digits-box">
+    <span *ngIf="hoursSpent < 10" class="digit-zero">0</span>
+    {{hoursSpent}}
+  </span>
+  <span class="watch-colon">:</span>
+	<span id="watch-minutes" class="watch__digits-box">
+    <span *ngIf="minutesSpent < 10" class="digit-zero">0</span>
+    {{minutesSpent}}
+  </span>
+  <span class="watch-colon">:</span>
+	<span id="watch-seconds" class="watch__digits-box">
+    <span *ngIf="secondsSpent < 10" class="digit-zero">0</span>
+    {{secondsSpent}}
+	</span>
+	<span class="watch-colon">:</span>
+	<span id="watch-miliseconds" class="watch-milisec watch__digits-box">
+		<span *ngIf="milisecondsSpent < 100" class="digit-zero">00</span>
+    {{milisecondsSpent}}
+  </span>
+</div>
+
+<div>Current Lap Time:</div>
+<div class="clockWatch lapWatch">
+	<span id="watch-hours" class="watch__digits-box">
+    <span *ngIf="currLaphours < 10" class="digit-zero">0</span>
+    {{currLaphours}}
+  </span>
+  <span class="watch-colon">:</span>
+	<span id="watch-minutes" class="watch__digits-box">
+    <span *ngIf="currLapMinutes < 10" class="digit-zero">0</span>
+    {{currLapMinutes}}
+  </span>
+  <span class="watch-colon">:</span>
+	<span id="watch-seconds" class="watch__digits-box">
+    <span *ngIf="currLapSec < 10" class="digit-zero">0</span>
+    {{currLapSec}}
+	</span>
+	<span class="watch-colon">:</span>
+	<span id="watch-miliseconds" class="watch-milisec watch__digits-box">
+		<span *ngIf="currLapMilisec < 100" class="digit-zero">00</span>
+    {{currLapMilisec}}
+  </span>
+</div>
+
+
 <ul>
-	<li *ngFor="let lap of laps">{{lap.time}}</li>
+	<li *ngFor="let lap of laps">
+		<span>{{lap.hours}}</span>
+		<span>{{lap.minutes}}</span>
+		<span>{{lap.seconds}}</span>
+		<span>{{lap.miliseconds}}</span>
+	</li>
 </ul>
 <form id="countdown-controls">
 	<button (click)="start()">Start</button>
 	<button (click)="pause()">Pause</button>
-	<button (click)="reset()">Reset</button>  
+	<button (click)="reset()">Reset</button>
 	<button (click)="lap()">Laps...</button>
 </form>

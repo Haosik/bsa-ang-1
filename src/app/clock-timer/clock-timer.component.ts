@@ -14,9 +14,9 @@ export class ClockTimerComponent implements OnInit {
   public timeLeft = 0;
   private interval: any;
   constructor() { }
-  private secondsLeft = 0;
-  private minutesLeft = 0;
-  private hoursLeft = 0;
+  public secondsLeft = 0;
+  public minutesLeft = 0;
+  public hoursLeft = 0;
 
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class ClockTimerComponent implements OnInit {
       this.active = true;
       this.interval = setInterval(() => {
         this.timeLeft = this.timeLeft - 1000;
-        this.secondsLeft = (this.timeLeft / 1000) % 60;
+        this.secondsLeft = Math.floor(this.timeLeft / 1000) % 60;
         this.minutesLeft = Math.floor((this.timeLeft / 1000 / 60) % 60);
         this.hoursLeft = Math.floor((this.timeLeft / 1000 / 60/ 60) % 60);
         if (this.timeLeft <= 0) {

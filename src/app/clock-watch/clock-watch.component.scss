@@ -1,4 +1,4 @@
-#clockWatch {
+.clockWatch {
 	display: flex;
 	align-items: center;
 	margin-bottom: 30px;
@@ -13,6 +13,9 @@
 	color: #fff;
 	border-radius: 10px;
 	background-color: #000;
+}
+.lapWatch .watch__digits-box {
+	background-color: #999;
 }
 .watch-milisec {
 	display: inline-flex;
