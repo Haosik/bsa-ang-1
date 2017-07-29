@@ -7,6 +7,7 @@ import { ClockControlComponent } from './clock-control/clock-control.component';
 import { ClockWatchComponent } from './clock-watch/clock-watch.component';
 import { ClockTimerComponent } from './clock-timer/clock-timer.component';
 import { ClockCountdownComponent } from './clock-countdown/clock-countdown.component';
+import { WatchService} from './watch.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { ClockCountdownComponent } from './clock-countdown/clock-countdown.compo
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [WatchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

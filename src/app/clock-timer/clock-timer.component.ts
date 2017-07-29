@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WatchService } from '../watch.service';
 
 @Component({
   selector: 'app-clock-timer',
@@ -7,29 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClockTimerComponent implements OnInit {
 
+  constructor(private watchService: WatchService) { }
+
+  ngOnInit() {  }
+
   timerMin: number = 0;
   timerMax: number = 120;
   public active = false;
   public time = 0;
   public timeLeft = 0;
   private interval: any;
-  constructor() { }
+
   public secondsLeft = 0;
   public minutesLeft = 0;
   public hoursLeft = 0;
-
-
-  ngOnInit() {
-  }
 
   start() {
     if (this.timeLeft > 0) {
       this.active = true;
       this.interval = setInterval(() => {
         this.timeLeft = this.timeLeft - 1000;
-        this.secondsLeft = Math.floor(this.timeLeft / 1000) % 60;
-        this.minutesLeft = Math.floor((this.timeLeft / 1000 / 60) % 60);
-        this.hoursLeft = Math.floor((this.timeLeft / 1000 / 60/ 60) % 60);
+        this.secondsLeft = this.watchService.pretty('seconds', this.timeLeft);
+        this.minutesLeft = this.watchService.pretty('minutes', this.timeLeft);
+        this.hoursLeft = this.watchService.pretty('hours', this.timeLeft);
+
         if (this.timeLeft <= 0) {
           this.pause();
           // Some beautiful notification )))

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WatchService } from '../watch.service';
 
 @Component({
   selector: 'app-clock-countdown',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClockCountdownComponent implements OnInit {
 
+  constructor(private watchService: WatchService) { }
+  
+   ngOnInit() {  }
+
   public lapTime = 0;
   public timer = 0;
-
 
   public hoursSpent = 0;
   public minutesSpent = 0;
@@ -23,25 +27,20 @@ export class ClockCountdownComponent implements OnInit {
   private interval: any;
   public laps: any[] = [];
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
   start() {
     this.active = true;
     this.interval = setInterval(() => {
       this.timer += 100;
       this.lapTime += 100;
-      this.hoursSpent = Math.floor((this.timer / 1000 / 60 / 60) % 60);
-      this.minutesSpent = Math.floor((this.timer / 1000 / 60) % 60);
-      this.secondsSpent = Math.floor(this.timer / 1000) % 60;
-      this.milisecondsSpent = Math.floor(this.timer % 1000);
+      this.hoursSpent = this.watchService.pretty('hours', this.timer);
+      this.minutesSpent = this.watchService.pretty('minutes', this.timer);
+      this.secondsSpent = this.watchService.pretty('seconds', this.timer);
+      this.milisecondsSpent = this.watchService.pretty('miliseconds', this.timer);
 
-      this.currLaphours = Math.floor((this.lapTime / 1000 / 60 / 60) % 60);
-      this.currLapMinutes = Math.floor((this.lapTime / 1000 / 60) % 60);
-      this.currLapSec = Math.floor(this.lapTime / 1000) % 60;
-      this.currLapMilisec = Math.floor(this.lapTime % 1000);
+      this.currLaphours = this.watchService.pretty('hours', this.lapTime);
+      this.currLapMinutes = this.watchService.pretty('minutes', this.lapTime);
+      this.currLapSec = this.watchService.pretty('seconds', this.lapTime);
+      this.currLapMilisec = this.watchService.pretty('miliseconds', this.lapTime);
     }, 100);
   }
 
@@ -53,7 +52,12 @@ export class ClockCountdownComponent implements OnInit {
   reset() {
     this.pause();
     this.timer = 0;
+    this.lapTime = 0;
   }
+
+  prevLapTime: number = 0;
+  currLapTime: number = 0;
+  avgLapTime: number = 0;
 
   lap() {
     this.laps.push({
