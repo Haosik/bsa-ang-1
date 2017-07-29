@@ -18,7 +18,7 @@ export class ClockWatchComponent implements OnInit {
    ngOnInit() {
     this.watchInterval = setInterval(() => {
       this.initCurrentWatch() 
-    }, 1000)
+    }, 1000);
   }
 
   watchInterval;
@@ -29,13 +29,5 @@ export class ClockWatchComponent implements OnInit {
     this.minutesNow = this.dateNow.getMinutes();
     this.secondsNow = this.dateNow.getSeconds();
   };
-
-  // initTimer() {
-  //   clearInterval(this.watchInterval);
-  // };
-
-  // initCountdown() {
-  //   clearInterval(this.watchInterval);
-  // };
 
 }

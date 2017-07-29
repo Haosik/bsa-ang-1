@@ -18,7 +18,7 @@ export class ClockCountdownComponent implements OnInit {
   ngOnInit() {
   }
 
-  start(){
+  start() {
     this.active = true;
     this.interval = setInterval(() => {
       this.timer += 100;
@@ -26,17 +26,17 @@ export class ClockCountdownComponent implements OnInit {
     }, 100);
   }
 
-  pause(){
+  pause() {
     this.active = false;
     clearInterval(this.interval);
   }
 
-  reset(){
+  reset() {
     this.pause();
     this.timer = 0;
   }
 
-  lap(){
+  lap() {
     this.laps.push({
       time: this.lapTime
     });

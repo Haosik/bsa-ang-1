@@ -1,10 +1,24 @@
-<p>
-  clock-timer works!
-</p>
-<div class="q">{{timeLeft}}</div>
+<div id="clockWatch">
+	<span id="watch-hours" class="watch__digits-box">
+    <span *ngIf="hoursLeft < 10" class="digit-zero">0</span>
+    {{hoursLeft}}
+  </span>
+  <span class="watch-colon">:</span>
+	<span id="watch-minutes" class="watch__digits-box">
+    <span *ngIf="minutesLeft < 10" class="digit-zero">0</span>
+    {{minutesLeft}}
+  </span>
+  <span class="watch-colon">:</span>
+	<span id="watch-seconds" class="watch__digits-box">
+    <span *ngIf="secondsLeft < 10" class="digit-zero">0</span>
+    {{secondsLeft}}
+  </span>
+</div>
+
+<div class="pauser" *ngIf="!active">Timer is not active.</div>
 <div id="timer-controls">
-	<button (click)="start()">Start</button>
-	<button (click)="pause()">Pause</button>
+	<button (click)="start()" [disabled]="timeLeft <= 0 || active">Start</button>
+	<button (click)="pause()" [disabled]="!active">Pause</button>
 	<button (click)="reset()">Reset</button>
-	Set time:<input type="number" [(ngModel)]="time" (change)="setTimer()" [min]="timerMin" [max]="timerMax">
+	Set time:<input type="number" [(ngModel)]="time" (input)="setTimer()" [min]="timerMin" [max]="timerMax"> minute(s) ({{timerMin}} - {{timerMax}})
 </div>
