@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-   watchType: string = 'countdown';
+   watchType: string = 'watch';
 
   changeType(typeRadio) {
     this.watchType = typeRadio.value;
