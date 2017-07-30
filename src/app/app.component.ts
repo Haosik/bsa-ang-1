@@ -11,5 +11,5 @@ export class AppComponent {
 
 	gotWatchType(event) {
 		this.watchType = event;
-	};
+	}
 }

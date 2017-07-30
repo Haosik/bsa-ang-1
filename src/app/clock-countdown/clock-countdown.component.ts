@@ -10,8 +10,6 @@ export class ClockCountdownComponent implements OnInit {
 
 	constructor(private watchService: WatchService) { }
 
-	ngOnInit() { }
-
 	public lapTime = 0;
 	public timer = 0;
 
@@ -26,6 +24,20 @@ export class ClockCountdownComponent implements OnInit {
 	private active = false;
 	private interval: any;
 	public laps: any[] = [];
+
+	prevLapTime = 0;
+	prevLapHours = 0;
+	prevLapMinutes = 0;
+	prevLapSeconds = 0;
+	prevLapMiliseconds = 0;
+	avgLapTime = 0;
+	avgLapHours = 0;
+	avgLapMinutes = 0;
+	avgLapSeconds = 0;
+	avgLapMiliseconds = 0;
+	slowerLap = false;
+
+	ngOnInit() { }
 
 	setSpentTime() {
 		this.hoursSpent = this.watchService.pretty('hours', this.timer);
@@ -64,20 +76,10 @@ export class ClockCountdownComponent implements OnInit {
 		this.laps = [];
 	}
 
-	prevLapTime: number = 0;
-	prevLapHours: number = 0;
-	prevLapMinutes: number = 0;
-	prevLapSeconds: number = 0;
-	prevLapMiliseconds: number = 0;
-	avgLapTime: number = 0;
-	avgLapHours: number = 0;
-	avgLapMinutes: number = 0;
-	avgLapSeconds: number = 0;
-	avgLapMiliseconds: number = 0;
-	slowerLap: boolean = false;
+
 
 	setAvgLapTime() {
-		let laps = this.laps;
+		const laps = this.laps;
 		let totalTime = 0;
 		laps.forEach((el, ind) => {
 			totalTime += el.lapObj.time;
@@ -94,7 +96,7 @@ export class ClockCountdownComponent implements OnInit {
 			this.slowerLap = false;
 		} else {
 			this.slowerLap = true;
-		};
+		}
 		const lapObj = {
 			time: this.lapTime,
 			hours: this.currLaphours,
@@ -107,7 +109,7 @@ export class ClockCountdownComponent implements OnInit {
 			prevLapSeconds: this.prevLapSeconds,
 			prevLapMiliseconds: this.prevLapMiliseconds,
 			slowerLap: this.slowerLap
-		}
+		};
 		this.laps.push({ lapObj });
 		this.setAvgLapTime();
 

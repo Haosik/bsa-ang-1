@@ -10,10 +10,8 @@ export class ClockTimerComponent implements OnInit {
 
 	constructor(private watchService: WatchService) { }
 
-	ngOnInit() { }
-
-	timerMin: number = 0;
-	timerMax: number = 120;
+	timerMin = 0;
+	timerMax = 120;
 	public active = false;
 	public time = 0;
 	public timeLeft = 0;
@@ -22,6 +20,8 @@ export class ClockTimerComponent implements OnInit {
 	public secondsLeft = 0;
 	public minutesLeft = 0;
 	public hoursLeft = 0;
+
+	ngOnInit() { }
 
 	start() {
 		if (this.timeLeft > 0) {

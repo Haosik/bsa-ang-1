@@ -7,7 +7,7 @@ import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 	styleUrls: ['./clock-control.component.scss']
 })
 export class ClockControlComponent implements OnInit {
-	
+
 	constructor() { }
 
 	@Output() changedType = new EventEmitter();

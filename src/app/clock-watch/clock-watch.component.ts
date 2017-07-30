@@ -15,19 +15,19 @@ export class ClockWatchComponent implements OnInit {
 		this.initCurrentWatch();
 	}
 
+	watchInterval;
+
 	ngOnInit() {
 		this.watchInterval = setInterval(() => {
 			this.initCurrentWatch()
 		}, 1000);
 	}
 
-	watchInterval;
-
 	initCurrentWatch() {
 		this.dateNow = new Date;
 		this.hoursNow = this.dateNow.getHours();
 		this.minutesNow = this.dateNow.getMinutes();
 		this.secondsNow = this.dateNow.getSeconds();
-	};
+	}
 
 }
