@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 
 @Component({
@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
 	styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-	watchType: string = 'watch';
+	watchType;
 
-	changeType(typeRadio) {
-		this.watchType = typeRadio.value;
+	gotWatchType(event) {
+		this.watchType = event;
 	};
 }

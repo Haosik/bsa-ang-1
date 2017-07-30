@@ -1,6 +1,6 @@
 <div class="container">
-  <app-clock-watch *ngIf="watchType == 'watch'"></app-clock-watch>
-  <app-clock-timer *ngIf="watchType == 'timer'"></app-clock-timer>
-  <app-clock-countdown *ngIf="watchType == 'countdown'"></app-clock-countdown>
-  <app-clock-control (change)="changeType($event.target)"></app-clock-control>
+	<app-clock-watch [hidden]="watchType != 'watch'"></app-clock-watch>
+	<app-clock-timer [hidden]="watchType != 'timer'"></app-clock-timer>
+	<app-clock-countdown [hidden]="watchType != 'countdown'"></app-clock-countdown>
+	<app-clock-control (changedType)="gotWatchType($event)"></app-clock-control>
 </div>
