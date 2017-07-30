@@ -36,22 +36,39 @@
 		<span *ngIf="currLapMilisec < 100" class="digit-zero">00</span> {{currLapMilisec}}
 		</span>
 	</div>
-	<div class="avg-lap-time"> Average Lap Time: {{avgLapTime}} ms</div>
+	<div class="avg-lap-time"> Average Lap Time: {{avgLapHours}}h {{avgLapMinutes}}m {{avgLapSeconds}}s {{avgLapMiliseconds}}ms</div>
 </div>
 
-
-<ol>
-	<li *ngFor="let lap of laps" [class]="lap.slowerLap ? 'lap slower-lap' : 'lap'">
-		<span>{{lap.hours}} h</span>
-		<span>{{lap.minutes}} m</span>
-		<span>{{lap.seconds}} s</span>
-		<span>{{lap.miliseconds}} ms</span>
-		<!-- <p>Avg lap time: {{ avgLapTime }} ms</p> -->
-	</li>
-</ol>
 <form id="countdown-controls">
 	<button (click)="start()" [disabled]="timer > 0 && active">Start</button>
 	<button (click)="pause()" [disabled]="timer <= 0">Pause</button>
 	<button (click)="reset()">Reset</button>
 	<button (click)="lap()" [disabled]="lapTime <= 0">Laps</button>
 </form>
+
+<ol>
+	<li *ngFor="let lap of laps" [class]="lap.lapObj.slowerLap ? 'lap slower-lap' : 'lap'">
+		<div class="lap-curr">
+			Current:
+			<span>{{lap.lapObj.hours}} h</span>
+			<span>{{lap.lapObj.minutes}} m</span>
+			<span>{{lap.lapObj.seconds}} s</span>
+			<span>{{lap.lapObj.miliseconds}} ms</span>
+		</div>
+		<div class="lap-prev">
+			Previous:
+			<span>{{lap.lapObj.prevLapHours}} h</span>
+			<span>{{lap.lapObj.prevLapMinutes}} m</span>
+			<span>{{lap.lapObj.prevLapSeconds}} s</span>
+			<span>{{lap.lapObj.prevLapMiliseconds}} ms</span>
+		</div>
+		<div class="lap-avg">
+			Average:
+			<span>{{avgLapHours}} h</span>
+			<span>{{avgLapMinutes}} m</span>
+			<span>{{avgLapSeconds}} s</span>
+			<span>{{avgLapMiliseconds}} ms</span>
+		</div>
+		<!-- <p>Avg lap time: {{ avgLapTime }} ms</p> -->
+	</li>
+</ol>

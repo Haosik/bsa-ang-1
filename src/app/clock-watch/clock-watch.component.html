@@ -1,26 +1,19 @@
 <div class="clockWatch">
 	<span id="watch-hours" class="watch__digits-box">
-    <span *ngIf="hoursNow < 10" class="digit-zero">0</span>
-    {{hoursNow}}
-  </span>
-  <span class="watch-colon">:</span>
+		<span *ngIf="hoursNow < 10" class="digit-zero">0</span> {{hoursNow}}
+	</span>
+	<span class="watch-colon">:</span>
 	<span id="watch-minutes" class="watch__digits-box">
-    <span *ngIf="minutesNow < 10" class="digit-zero">0</span>
-    {{minutesNow}}
-  </span>
-  <span class="watch-colon">:</span>
+		<span *ngIf="minutesNow < 10" class="digit-zero">0</span> {{minutesNow}}
+	</span>
+	<span class="watch-colon">:</span>
 	<span id="watch-seconds" class="watch__digits-box">
-    <span *ngIf="secondsNow < 10" class="digit-zero">0</span>
-    {{secondsNow}}
-  </span>
-  <span class="watch-milisec" *ngIf="watchType == 'NotActiveJustInCase'">
-    <span class="watch-colon">:</span>
-    <span id="watch-miliseconds" class="watch__digits-box">
-      000
-    </span>
-  </span>
+		<span *ngIf="secondsNow < 10" class="digit-zero">0</span> {{secondsNow}}
+	</span>
+	<span class="watch-milisec" *ngIf="watchType == 'NotActiveJustInCase'">
+		<span class="watch-colon">:</span>
+	<span id="watch-miliseconds" class="watch__digits-box">
+			000
+		</span>
+	</span>
 </div>
-
-
-
-

@@ -1,5 +1,6 @@
 .lap {
 	color: LimeGreen;
+	font-family: sans-serif;
 	border-bottom: 1px solid lightgray;
 	&.slower-lap {
 		color: tomato;
@@ -7,6 +8,14 @@
 }
 
 .avg-lap-time {
+	margin: 5px 0 10px;
 	font-size: 28px;
 	font-family: sans-serif;
+}
+.lap-curr {
+	font-weight: 700;
+}
+.lap-prev, .lap-avg {
+	font-size: 12px;
+	line-height: 13px;
 }
